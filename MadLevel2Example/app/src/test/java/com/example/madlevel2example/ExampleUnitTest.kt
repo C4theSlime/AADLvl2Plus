@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.madlevel2example
 
 import org.junit.Test
 
