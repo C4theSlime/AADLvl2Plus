@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel2task1.databinding.ItemPlaceBinding
 
-class PlaceAdapter (private val places: List<Places>):
+class PlaceAdapter (private val places: List<Place>):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val binding = ItemPlaceBinding.bind(itemView)
 
-        fun databind(places: Places) {
+        fun databind(places: Place) {
             binding.placeText.text = places.name
             binding.placeImg.setImageResource(places.imageResId)
         }
