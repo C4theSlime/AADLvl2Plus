@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel2task2.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvQuestions.addItemDecoration(DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL))
 
         for (i in Question.QUESTIONS.indices) {
-            questions.add(Question(Question.QUESTIONS[i]))
+            questions.add(Question(Question.QUESTIONS[i], Question.QUESTIONS_TRUE[i]))
         }
         questionAdapter.notifyDataSetChanged()
 
@@ -54,11 +55,21 @@ class MainActivity : AppCompatActivity() {
             // Callback triggered when a user swiped an item.
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                questions.removeAt(position)
+                if (ItemTouchHelper.RIGHT == direction) {
+                    if (questions[position].questionTrue) {
+                        questions.removeAt(position)
+                    }
+                    else { Snackbar.make(rvQuestions, "Wrong answer!", Snackbar.LENGTH_SHORT).show() }
+                }
+                else if (ItemTouchHelper.LEFT == direction) {
+                    if (!questions[position].questionTrue) {
+                        questions.removeAt(position)
+                    }
+                    else { Snackbar.make(rvQuestions, "Wrong answer!", Snackbar.LENGTH_SHORT).show()}
+                }
                 questionAdapter.notifyDataSetChanged()
             }
         }
         return ItemTouchHelper(callback)
     }
-
 }
