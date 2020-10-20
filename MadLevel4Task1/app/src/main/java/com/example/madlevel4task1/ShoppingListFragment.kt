@@ -46,7 +46,11 @@ class ShoppingListFragment : Fragment() {
         initViews()
 
         fab_add.setOnClickListener {
-            showAddProductdialog();
+            showAddProductdialog()
+        }
+
+        fab_delete.setOnClickListener {
+            removeAllProducts()
         }
     }
 
@@ -114,7 +118,7 @@ class ShoppingListFragment : Fragment() {
             this@ShoppingListFragment.shoppingAdapter.notifyDataSetChanged()
         }
 
-        createItemTouchHelper().attachToRecyclerView()
+        createItemTouchHelper().attachToRecyclerView(rvShopping)
     }
 
     private fun createItemTouchHelper(): ItemTouchHelper {
@@ -146,5 +150,15 @@ class ShoppingListFragment : Fragment() {
         }
         return ItemTouchHelper(callback)
     }
+
+    private fun removeAllProducts() {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                productRepository.deleteAllProducts()
+            }
+            getShoppingListFromDatabase()
+        }
+    }
+
 
 }
