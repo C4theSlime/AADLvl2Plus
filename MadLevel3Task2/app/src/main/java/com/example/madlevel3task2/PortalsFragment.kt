@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_portals.*
 
@@ -38,6 +40,8 @@ class PortalsFragment : Fragment() {
         // Initialize the recycler view with a linear layout manager, adapter
         rvPortals.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         rvPortals.adapter = portalAdapter
+
+        createItemTouchHelper().attachToRecyclerView(rvPortals)
     }
 
     private fun observeAddReminderResult() {
@@ -53,5 +57,26 @@ class PortalsFragment : Fragment() {
             portals.add(Portal(portalTitle, portalUrl))
             portalAdapter.notifyDataSetChanged()
         }
+    }
+
+    private fun createItemTouchHelper(): ItemTouchHelper {
+
+        val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                portals.removeAt(position)
+                portalAdapter.notifyDataSetChanged()
+            }
+        }
+        return ItemTouchHelper(callback)
     }
 }
