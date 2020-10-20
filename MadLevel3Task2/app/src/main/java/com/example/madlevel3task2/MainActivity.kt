@@ -27,7 +27,19 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        fabToggler()
     }
+
+    private fun fabToggler() {
+        navController.addOnDestinationChangedListener { _,       destination, _ ->
+            if (destination.id in arrayOf(R.id.addPortalFragment)) {
+                fab.hide()
+            } else {
+                fab.show()
+            }
+        }
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
