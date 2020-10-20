@@ -24,7 +24,21 @@ class RatingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btn_to_summary.setOnClickListener {
+            navigateToSummary()
+        }
+
         showRandomAssessableGame()
+    }
+
+    private fun navigateToSummary() {
+
+        val args = Bundle()
+        args.putFloat(ARG_GAME_RATING, game_rating.rating)
+        args.putString(ARG_GAME_NAME, txt_game.text.toString())
+
+        findNavController().navigate(R.id.action_ratingFragment_to_summaryFragment, args)
     }
 
     private fun showRandomAssessableGame() {
