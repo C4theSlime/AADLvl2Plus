@@ -57,6 +57,5 @@ class AddPortalFragment : Fragment() {
                 R.string.not_valid_portal, Toast.LENGTH_SHORT
             ).show()
         }
-
     }
 }
