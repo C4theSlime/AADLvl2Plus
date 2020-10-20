@@ -19,4 +19,9 @@
         android:name="com.example.madlevel3task1.RatingFragment"
         android:label="fragment_rating"
         tools:layout="@layout/fragment_rating" />
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.example.madlevel3task1.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary" />
 </navigation>
