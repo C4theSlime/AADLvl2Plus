@@ -11,4 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="welcome_title">Welcome</string>
     <string name="instructions_text">Instructions: select rock, paper or scissors to play.</string>
+    <string name="versus_text">VS.</string>
+    <string name="computer_text">Computer</string>
+    <string name="player_text">Player</string>
 </resources>
