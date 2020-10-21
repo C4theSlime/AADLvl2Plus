@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/versusText2"
+        app:layout_constraintBottom_toTopOf="@+id/versusTextHis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,11 +36,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/versusText2"
+        app:layout_constraintStart_toEndOf="@+id/versusTextHis"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/versusText2"
+        android:id="@+id/versusTextHis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -60,7 +60,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/versusText2"
+        app:layout_constraintEnd_toStartOf="@+id/versusTextHis"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

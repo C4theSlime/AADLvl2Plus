@@ -4,9 +4,11 @@ import android.media.Image
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import java.util.*
 
 @Entity(tableName = "match_table")
+@TypeConverters(DateConverter::class)
 data class Match (
     @ColumnInfo(name = "matchdate") var matchDate: Date,
     @ColumnInfo(name = "matchresult") var matchResult : Int,

@@ -86,6 +86,33 @@
         app:layout_constraintTop_toBottomOf="@+id/underLine"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <TextView
+        android:id="@+id/computerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/computer_text"
+        app:layout_constraintBottom_toTopOf="@+id/btn_rock"
+        app:layout_constraintEnd_toStartOf="@+id/playerText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compChoice" />
+
+    <TextView
+        android:id="@+id/playerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/player_text"
+        app:layout_constraintBottom_toTopOf="@+id/btn_scissors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/computerText"
+        app:layout_constraintTop_toBottomOf="@+id/playerChoice" />
+
     <ImageButton
         android:id="@+id/btn_rock"
         android:layout_width="115dp"
@@ -124,32 +151,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_paper" />
-
-    <TextView
-        android:id="@+id/computerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="90dp"
-        android:text="@string/computer_text"
-        app:layout_constraintBottom_toTopOf="@+id/btn_rock"
-        app:layout_constraintEnd_toStartOf="@+id/playerText"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compChoice" />
-
-    <TextView
-        android:id="@+id/playerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/player_text"
-        app:layout_constraintBottom_toTopOf="@+id/btn_scissors"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/computerText"
-        app:layout_constraintTop_toBottomOf="@+id/playerChoice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
