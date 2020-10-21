@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/playerResult"
+        android:id="@+id/playerChoice"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@+id/playerText"
@@ -70,13 +70,13 @@
         android:textStyle="bold|italic"
         android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/btn_paper"
-        app:layout_constraintEnd_toStartOf="@+id/playerResult"
+        app:layout_constraintEnd_toStartOf="@+id/playerChoice"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/compResult"
+        app:layout_constraintStart_toEndOf="@+id/compChoice"
         app:layout_constraintTop_toBottomOf="@+id/tvResultMatch" />
 
     <ImageView
-        android:id="@+id/compResult"
+        android:id="@+id/compChoice"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@+id/computerText"
@@ -136,7 +136,7 @@
         app:layout_constraintEnd_toStartOf="@+id/playerText"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compResult" />
+        app:layout_constraintTop_toBottomOf="@+id/compChoice" />
 
     <TextView
         android:id="@+id/playerText"
@@ -150,6 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/computerText"
-        app:layout_constraintTop_toBottomOf="@+id/playerResult" />
+        app:layout_constraintTop_toBottomOf="@+id/playerChoice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
