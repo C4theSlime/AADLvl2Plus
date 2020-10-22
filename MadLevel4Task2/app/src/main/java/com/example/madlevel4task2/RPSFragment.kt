@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.isVisible
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_rps.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -126,10 +123,10 @@ class RPSFragment : Fragment() {
             matchRepository.insertMatch(match)
         }
 
-        getMatchListFromDatabase()
+        getMatchesFromDatabase()
     }
 
-    private suspend fun getMatchListFromDatabase() {
+    private suspend fun getMatchesFromDatabase() {
         mainScope.launch {
             withContext(Dispatchers.IO){
                 val matchList = withContext(Dispatchers.IO) {
