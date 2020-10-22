@@ -3,14 +3,13 @@ package com.example.madlevel4task2
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_rps.*
-import kotlinx.android.synthetic.main.item_match.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -18,6 +17,7 @@ import kotlinx.coroutines.launch
 class RPSFragment : Fragment() {
     private lateinit var matchRepository: MatchRepository
     private val mainScope = CoroutineScope(Dispatchers.Main)
+    private val matches = arrayListOf<Match>()
 
     private var playerDecision = 0
     private var compDecision = 0
@@ -33,8 +33,8 @@ class RPSFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initViews()
+        matchRepository = MatchRepository(requireContext())
+        mainScope.launch { initViews() }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -106,7 +106,36 @@ class RPSFragment : Fragment() {
             1 -> tvResultMatch.text = "You win!"
             2 -> tvResultMatch.text = "Computer wins!"
         }
+        mainScope.launch { addMatch() }
 
+    }
+
+    private suspend fun addMatch() {
+        val match = Match (
+            matchDate = Date(System.currentTimeMillis()),
+            matchResult = matchEnd,
+            computerMove = compDecision,
+            playerMove = playerDecision
+        )
+
+        withContext(Dispatchers.IO){
+            matchRepository.insertMatch(match)
+        }
+
+        getMatchListFromDatabase()
+    }
+
+    private suspend fun getMatchListFromDatabase() {
+        mainScope.launch {
+            withContext(Dispatchers.IO){
+                val matchList = withContext(Dispatchers.IO) {
+                    matchRepository.getAllMatches()
+                }
+
+                this@RPSFragment.matches.clear()
+                this@RPSFragment.matches.addAll(matchList)
+            }
+        }
     }
 
     private fun initMatch() {
