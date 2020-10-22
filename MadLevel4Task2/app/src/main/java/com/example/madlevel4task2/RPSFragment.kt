@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_rps.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,9 +35,10 @@ class RPSFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         matchRepository = MatchRepository(requireContext())
         mainScope.launch { initViews() }
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {

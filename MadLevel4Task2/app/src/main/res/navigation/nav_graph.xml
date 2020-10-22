@@ -18,5 +18,9 @@
         android:id="@+id/RPSHistoryFragment"
         android:name="com.example.madlevel4task2.RPSHistoryFragment"
         android:label="fragment_rps_history"
-        tools:layout="@layout/fragment_rps_history" />
+        tools:layout="@layout/fragment_rps_history" >
+        <action
+            android:id="@+id/action_RPSHistoryFragment_to_RPSFragment"
+            app:destination="@id/RPSFragment" />
+    </fragment>
 </navigation>

@@ -11,6 +11,7 @@ class MatchAdapter(private val matches: List<Match>): RecyclerView.Adapter <Matc
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun databind (match: Match){
+            itemView.tvDate.text = match.matchDate.toString()
             matchResult(match)
             playerScore(match)
             computerScore(match)
@@ -33,9 +34,9 @@ class MatchAdapter(private val matches: List<Match>): RecyclerView.Adapter <Matc
 
         private fun computerScore(matchObject: Match) {
             when (matchObject.computerMove) {
-                0 -> itemView.playerResult.setImageResource(R.drawable.rock)
-                1 -> itemView.playerResult.setImageResource(R.drawable.paper)
-                2 -> itemView.playerResult.setImageResource(R.drawable.scissors)
+                0 -> itemView.compResult.setImageResource(R.drawable.rock)
+                1 -> itemView.compResult.setImageResource(R.drawable.paper)
+                2 -> itemView.compResult.setImageResource(R.drawable.scissors)
             }
         }
     }
