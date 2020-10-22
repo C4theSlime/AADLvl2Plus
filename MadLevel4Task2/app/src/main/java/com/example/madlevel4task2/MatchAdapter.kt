@@ -17,7 +17,7 @@ class MatchAdapter(private val matches: List<Match>): RecyclerView.Adapter <Matc
         }
         private fun matchResult(matchObject: Match) {
             when (matchObject.matchResult) {
-                0 -> itemView.tvResult.text = "Draw"
+                0 -> itemView.tvResult.text = "Draw!"
                 1 -> itemView.tvResult.text = "You win!"
                 2 -> itemView.tvResult.text = "Computer wins!"
             }
