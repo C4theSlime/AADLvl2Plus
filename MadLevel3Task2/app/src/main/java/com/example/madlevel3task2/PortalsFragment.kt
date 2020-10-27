@@ -1,5 +1,8 @@
 package com.example.madlevel3task2
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_portals.*
  */
 class PortalsFragment : Fragment() {
     private val portals = arrayListOf<Portal>()
-    private val portalAdapter = PortalAdapter(portals)
+    private val portalAdapter = PortalAdapter(portals) { portal: Portal -> portalClick(portal)}
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -59,9 +64,16 @@ class PortalsFragment : Fragment() {
         }
     }
 
+    private fun portalClick(portal: Portal) {
+        val tabBuilder = CustomTabsIntent.Builder()
+        val customTabsIntent = tabBuilder.build()
+        customTabsIntent.intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        customTabsIntent.launchUrl(activity?.applicationContext!!, Uri.parse(portal.portalUrl))
+    }
+
     private fun createItemTouchHelper(): ItemTouchHelper {
 
-        val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
             override fun onMove(
                 recyclerView: RecyclerView,

@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_portal.view.*
 
-class PortalAdapter(private val portals: List<Portal>) : RecyclerView.Adapter<PortalAdapter.ViewHolder>(){
+class PortalAdapter(private val portals: List<Portal>, private val listener: (Portal) -> Unit) : RecyclerView.Adapter<PortalAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun databind(portal: Portal) {
             itemView.tvTitle.text = portal.portalTitle
             itemView.tvUrl.text = portal.portalUrl
+            itemView.setOnClickListener(){
+                listener(portal)
+            }
         }
     }
 

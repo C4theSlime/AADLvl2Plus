@@ -150,11 +150,7 @@ class RPSFragment : Fragment() {
 
     private fun randomChoice(): Int {
         val randomThrow = listOf(0, 1, 2).random()
-        when (randomThrow) {
-            0 -> compDecision = 0
-            1 -> compDecision = 1
-            2 -> compDecision = 2
-        }
+        compDecision = randomThrow
         return when (randomThrow) {
             0 -> R.drawable.rock
             1 -> R.drawable.paper
